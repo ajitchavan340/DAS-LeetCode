@@ -4,16 +4,14 @@ import org.example.stream.model.Apple;
 import org.example.stream.model.AppleFormatter;
 import org.example.stream.model.ApplePredicate;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortApple {
-    static List<Apple>  appleList = List.of(
+    static List<Apple>  appleList = Arrays.asList(
             new Apple(COLOR.RED,8.9),
             new Apple(COLOR.GREEN,10.1),
-            new Apple(COLOR.RED,6.9),
+            new Apple(COLOR.GREEN,8.9),
             new Apple(COLOR.GREEN,5.9),
             new Apple(COLOR.RED,88.9)
     );
@@ -65,10 +63,6 @@ public class SortApple {
         }
     }
 
-
-
-
-
     public static void main(String[] args) {
         SortApple sortApple = new SortApple();
         System.out.println(sortApple.filterGreenApples(appleList));
@@ -82,5 +76,14 @@ public class SortApple {
         List<Apple> green = appleList.parallelStream().filter((Apple a) -> a.getColor() == COLOR.GREEN).toList();
 
         sortApple.prettyPrintApple(appleList,new AppleFancyFormatter());
+
+        System.out.println("Apple list before ..."+appleList);
+
+
+        appleList.sort(Comparator.comparing(Apple::getWeight)
+                .reversed()
+                .thenComparing(Apple::getColor));
+
+        System.out.println("Apple list after ..."+appleList);
     }
 }
