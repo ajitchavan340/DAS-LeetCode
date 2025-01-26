@@ -1,6 +1,8 @@
 package org.example.stream.part2.practice;
 
-public class Trader{
+import java.io.Serializable;
+
+public class Trader implements Serializable {
  private final String name;
  private final String city;
  public Trader(String n, String c){

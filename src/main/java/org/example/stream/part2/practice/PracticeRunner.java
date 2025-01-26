@@ -1,6 +1,7 @@
 package org.example.stream.part2.practice;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class PracticeRunner {
 
@@ -97,5 +98,15 @@ public class PracticeRunner {
         System.out.println(practiceRunner.transactionsFromTradersLivingInCambridge(transactionList));
         System.out.println(practiceRunner.highestValueTransactions(transactionList));
         System.out.println(practiceRunner.smallestValueTransactions(transactionList));
+
+        String sysValue = System.getProperty("abc");
+        Stream<String> v = sysValue == null ? Stream.empty() : Stream.of(sysValue);
+        System.out.println(v);
+
+        System.out.println(Stream.ofNullable(System.getProperty("abc")));
+
+        Stream.iterate(0,n->n+2)
+                .limit(10)
+                .forEach(System.out::println);
     }
 }
