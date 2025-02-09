@@ -4,7 +4,6 @@ import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
